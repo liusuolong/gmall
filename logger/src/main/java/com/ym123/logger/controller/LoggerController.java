@@ -1,5 +1,8 @@
 package com.ym123.logger.controller;
 
+import lombok.extern.log4j.Log4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 //@RestController = @Controller + @ResponseBody
 @Controller
+@Log4j
 public class LoggerController {
+
+    //private Logger logger = LoggerFactory.getLogger(LoggerController.class);
+
     //映射
     @RequestMapping("test1")
     //返回对象
@@ -32,7 +39,9 @@ public class LoggerController {
 
     @RequestMapping("log")
     public String Mocker(@RequestParam("logString") String lo){
-        System.out.println(lo);
+        //logger.info(lo);
+        //System.out.println(lo);
+        log.info(lo);
         return "success";
     }
 }
