@@ -18,8 +18,8 @@
     <modules>
         <module>gmallCommon</module>
         <module>gmallMocker</module>
-        <module>gmallMocker</module>
         <module>logger</module>
+        <module>gmallRealtime</module>
     </modules>
 
     <properties>
@@ -38,6 +38,7 @@
     </properties>
 
     <dependencies>
+
         <!--此处放日志包，所有项目都要引用-->
         <!-- 所有子项目的日志框架 -->
         <dependency>
