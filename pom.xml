@@ -20,6 +20,8 @@
         <module>gmallMocker</module>
         <module>logger</module>
         <module>gmallRealtime</module>
+        <module>gmallCanal</module>
+        <module>gmallCanal</module>
     </modules>
 
     <properties>
