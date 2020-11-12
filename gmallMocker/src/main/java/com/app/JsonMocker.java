@@ -21,41 +21,70 @@ public class JsonMocker {
     private RandomDate logDateUtil = null;
 
 
-    private RanOpt[] osOpts = {new RanOpt("ios", 3), new RanOpt("andriod", 7)};
-    private RandomOptionGroup<String> osOptionGroup = new RandomOptionGroup(osOpts);
+    private RanOpt[] osOpts = {
+            new RanOpt("ios", 3),
+            new RanOpt("andriod", 7)};
+    private RandomOptionGroup<String> osOptionGroup =
+            new RandomOptionGroup(osOpts);
     private Date startTime = null;
     private Date endTime = null;
 
-    private RanOpt[] areaOpts = {new RanOpt("beijing", 10),
-            new RanOpt("shanghai", 10), new RanOpt("guangdong", 20), new RanOpt("hebei", 5),
-            new RanOpt("heilongjiang", 5), new RanOpt("shandong", 5), new RanOpt("tianjin", 5),
-            new RanOpt("shan3xi", 5), new RanOpt("shan1xi", 5), new RanOpt("sichuan", 5)
+    private RanOpt[] areaOpts = {
+            new RanOpt("beijing", 10),
+            new RanOpt("shanghai", 10),
+            new RanOpt("guangdong", 20),
+            new RanOpt("hebei", 5),
+            new RanOpt("heilongjiang", 5),
+            new RanOpt("shandong", 5),
+            new RanOpt("tianjin", 5),
+            new RanOpt("shan3xi", 5),
+            new RanOpt("shan1xi", 5),
+            new RanOpt("sichuan", 5)
     };
-    private RandomOptionGroup<String> areaOptionGroup = new RandomOptionGroup(areaOpts);
+    private RandomOptionGroup<String> areaOptionGroup =
+            new RandomOptionGroup(areaOpts);
 
     private String appId = "gmall2019";
 
-    private RanOpt[] vsOpts = {new RanOpt("1.2.0", 50), new RanOpt("1.1.2", 15),
+    private RanOpt[] vsOpts = {
+            new RanOpt("1.2.0", 50),
+            new RanOpt("1.1.2", 15),
             new RanOpt("1.1.3", 30),
             new RanOpt("1.1.1", 5)
     };
 
-    private RandomOptionGroup<String> vsOptionGroup = new RandomOptionGroup(vsOpts);
+    private RandomOptionGroup<String> vsOptionGroup =
+            new RandomOptionGroup(vsOpts);
 
-    private RanOpt[] eventOpts = {new RanOpt("addFavor", 10), new RanOpt("addComment", 30),new RanOpt("addCart", 20), new RanOpt("clickItem", 40), new RanOpt("coupon", 45)};
+    private RanOpt[] eventOpts = {
+            new RanOpt("addFavor", 10),
+            new RanOpt("addComment", 30),
+            new RanOpt("addCart", 20),
+            new RanOpt("clickItem", 5),
+            new RanOpt("coupon", 45)};
 
-    private RandomOptionGroup<String> eventOptionGroup = new RandomOptionGroup(eventOpts);
+    private RandomOptionGroup<String> eventOptionGroup =
+            new RandomOptionGroup(eventOpts);
 
-    private RanOpt[] channelOpts = {new RanOpt("xiaomi", 10), new RanOpt("huawei", 20),
-            new RanOpt("wandoujia", 30), new RanOpt("360", 20), new RanOpt("tencent", 20)
-            , new RanOpt("baidu", 10), new RanOpt("website", 10)
+    private RanOpt[] channelOpts = {
+            new RanOpt("xiaomi", 10),
+            new RanOpt("huawei", 20),
+            new RanOpt("wandoujia", 30),
+            new RanOpt("360", 20),
+            new RanOpt("tencent", 20),
+            new RanOpt("baidu", 10),
+            new RanOpt("website", 10)
     };
 
-    private RandomOptionGroup<String> channelOptionGroup = new RandomOptionGroup(channelOpts);
+    private RandomOptionGroup<String> channelOptionGroup =
+            new RandomOptionGroup(channelOpts);
 
-    private RanOpt[] quitOpts = {new RanOpt(true, 20), new RanOpt(false, 80)};
+    private RanOpt[] quitOpts = {
+            new RanOpt(true, 20),
+            new RanOpt(false, 80)};
 
-    private RandomOptionGroup<Boolean> isQuitGroup = new RandomOptionGroup(quitOpts);
+    private RandomOptionGroup<Boolean> isQuitGroup =
+            new RandomOptionGroup(quitOpts);
 
     private JsonMocker() {
 

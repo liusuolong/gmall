@@ -13,7 +13,12 @@ public class LogUploader {
     public static void sendLogStream(String log) {
         try {
             //不同的日志类型对应不同的URL
+            //集群
+            //nginx
+            // URL url = new URL("http://hadoop002:80/log");
             URL url = new URL("http://hadoop002/log");
+            //本地
+            //URL url = new URL("http://localhost:8081");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 

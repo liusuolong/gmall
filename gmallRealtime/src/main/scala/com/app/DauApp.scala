@@ -10,10 +10,10 @@ import com.utils.MyKafkaUtil
 import com.ym123.GmallConstants
 import org.apache.hadoop.hbase.HBaseConfiguration
 import org.apache.kafka.clients.consumer.ConsumerRecord
+import org.apache.phoenix.spark._
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import org.apache.phoenix.spark._
 
 /**
  * @author ymstart
@@ -28,10 +28,10 @@ object DauApp {
     val ssc = new StreamingContext(conf, Seconds(3))
 
     //3.消费kafka中的启动数据
-    val kafkaDStream: InputDStream[ConsumerRecord[String, String]] = MyKafkaUtil.getKafkaStream(GmallConstants.KAFKA_TOPIC_START,ssc)
+    val kafkaDStream: InputDStream[ConsumerRecord[String, String]] = MyKafkaUtil.getKafkaStream(GmallConstants.KAFKA_TOPIC_START, ssc)
 
     //4将数据转换为样例类，并添加时间字段 Driver端
-    val sdf = new SimpleDateFormat("yyyy-MM-dd HH")  //可序列化的
+    val sdf = new SimpleDateFormat("yyyy-MM-dd HH") //可序列化的
 
     val startUpLogDStream: DStream[StartUpLog] = kafkaDStream.map(
       record => {
@@ -58,10 +58,10 @@ object DauApp {
     //5.redis 跨批次去重
     val fielderByRedis: DStream[StartUpLog] = DauHandler.fielderByRedis(startUpLogDStream)
 
-/*    startUpLogDStream.cache()
-    startUpLogDStream.count().print()
-    fieldedByRedis.cache()
-    fieldedByRedis.count().print()*/
+    /*    startUpLogDStream.cache()
+        startUpLogDStream.count().print()
+        fieldedByRedis.cache()
+        fieldedByRedis.count().print()*/
 
     //6.根据mid 同批次去重
     val filteredByMidDStream: DStream[StartUpLog] = DauHandler.fielderByMid(fielderByRedis)
@@ -72,7 +72,7 @@ object DauApp {
     //8.将去重后的数据存入phoenix
     filteredByMidDStream.foreachRDD(
       //GMALL2020_DAU 表名 Seq()表字段 Some()连接地址
-      rdd=> {
+      rdd => {
         rdd.saveToPhoenix("GMALL2020_DAU",
           Seq("MID", "UID", "APPID", "AREA", "OS", "CH", "TYPE", "VS", "LOGDATE", "LOGHOUR", "TS"),
           HBaseConfiguration.create(),
@@ -80,17 +80,17 @@ object DauApp {
       }
     )
 
-/*    //测试数据流是否打通
-    kafkaDStream.foreachRDD(
-      rdd=>{
-        rdd.foreach(
-          record=>{
-            val str: String = record.value()
-            println(str)
+    /*    //测试数据流是否打通
+        kafkaDStream.foreachRDD(
+          rdd=>{
+            rdd.foreach(
+              record=>{
+                val str: String = record.value()
+                println(str)
+              }
+            )
           }
-        )
-      }
-    )*/
+        )*/
 
     ssc.start()
 

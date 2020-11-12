@@ -59,8 +59,10 @@ public class LoggerController {
         log.info(string);
 
         if ("startup".equals(jsonObject.getString("type"))){
+            //启动数据
             kafkaTemplate.send(GmallConstants.KAFKA_TOPIC_START,string);
         }else{
+            //事件日志
             kafkaTemplate.send(GmallConstants.KAFKA_TOPIC_EVENT,string);
         }
         log.info(lo);

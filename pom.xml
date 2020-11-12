@@ -22,6 +22,7 @@
         <module>gmallRealtime</module>
         <module>gmallCanal</module>
         <module>gmallCanal</module>
+        <module>gmallEs</module>
     </modules>
 
     <properties>

@@ -13,4 +13,10 @@ public interface PublisherService {
 
     //分时统计
     public Map getDauTotalHourMap(String date);
+
+    //当日交易金额
+    public Double getOrderTotal(String data);
+
+    //分时交易金额
+    public Map getOrderTotalHourMap(String data);
 }

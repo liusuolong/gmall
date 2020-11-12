@@ -14,4 +14,6 @@ public interface DauMapper {
     //分时统计
     public List<Map> selectDauTotalHourMap(String date);
 
+    //GMV
+
 }
